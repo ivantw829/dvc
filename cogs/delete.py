@@ -18,6 +18,10 @@ class delete(commands.Cog):
         with open(path, "r") as file:
             data = json.load(file)
 
+        # 檢測是否是離開頻道
+        if before.channel == None:
+            return  # 如果成員是加入，結束此指令
+
         # 檢測原本的頻道是否是動態語音
         if not before.channel.id in data:
             return  # 如果不是就結束指令
